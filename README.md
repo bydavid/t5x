@@ -12,7 +12,17 @@ more, see the [T5X Paper](https://arxiv.org/abs/2203.17189).
 Below is a quick start guide for training models with TPUs on Google Cloud. For
 additional tutorials and background, see the [complete documentation](docs/index.md).
 
-## Quickstart (Recommended)
+## TOC
+
+- [Getting Started](#quickstart)
+- [GPU Usage](#gpu usage)
+- [Installation](#installation)
+- [Using Custom Components](#custom components)
+- [Checkpoints](#checkpoints)
+- [Citations](#citing t5x) 
+- [Example](#Example: English to German translation)
+
+## [Quickstart] (Recommended)
 
 T5X can be run with [XManager](https://github.com/deepmind/xmanager) on
 [Vertex AI](https://cloud.google.com/vertex-ai). Vertex AI is a platform for
@@ -67,7 +77,7 @@ python3 ./t5x/scripts/xm_launch.py \
 Check `gs://$GOOGLE_CLOUD_BUCKET_NAME/t5x/` for the output artifacts, which can
 be read by TensorBoard.
 
-## GPU Usage
+## [GPU Usage]
 
 T5X can be run easily on GPUs either in single-node configurations or multi-node configurations with a SLURM+pyxis cluster. Further instructions at [t5x/contrib/gpu/scripts_gpu](./t5x/contrib/gpu/scripts_gpu/README.md). The `t5x/contrib/gpu/scripts_gpu` folder contains example scripts for pretraining T5X on [The Pile](https://pile.eleuther.ai/) and for finetuning on SQuAD and MNLI. These scripts and associated `gin` configurations also contain additional GPU optimizations for better throughput.
 
@@ -121,11 +131,11 @@ the TPU VM instance unless otherwise stated.
     checkpoints. To create a GCS bucket, see these
     [instructions](https://cloud.google.com/storage/docs/creating-buckets).
 
-6.  (optional) If you prefer working with Jupyter/Cloab style environment
+6.  (optional) If you prefer working with Jupyter/Colab style environment
     you can setup a custom Colab runtime by following steps from
     [t5x/notebooks](t5x/notebooks/README.md).
 
-## Example: English to German translation
+## [Example: English to German translation]
 
 As a running example, we use the WMT14 En-De translation. The raw dataset is
 available in TensorFlow Datasets as
@@ -212,7 +222,7 @@ optimizer states.
 
 To monitor the training in [TensorBoard](https://www.tensorflow.org/tensorboard), it is much easier (due to
 authentification issues) to launch the TensorBoard on your own machine and _not_ in
-the TPU VM. So in the commandline where you ssh'ed into the TPU VM, launch the
+the TPU VM. So in the command line where you ssh'ed into the TPU VM, launch the
 TensorBoard with the `logdir` pointing to the `MODEL_DIR`.
 
 ```sh
@@ -367,7 +377,7 @@ For detailed arguments definition refer to [export.gin]
 You can run XL and smaller models on NVIDIA A100 40GB, and XXL models on
 NVIDIA A100 80GB.
 
-## Custom components
+## [Custom components]
 
 [The translation example](#example-english-to-german-translation) uses the
 encoder-decoder model that T5X provides as well as the dataset from the T5
@@ -456,7 +466,7 @@ python3 ${T5X_DIR}/t5x/train.py \
   --tfds_data_dir=${TFDS_DATA_DIR}
 ```
 
-## Checkpoints
+## [Checkpoints]
 
 ### Native Checkpoints
 
@@ -501,7 +511,7 @@ checkpoints to T5X native format using the
 [convert_tf_checkpoint script](t5x/scripts/convert_tf_checkpoint.py).
 
 
-## Citing T5X
+## [Citing T5X]
 Please use the following bibtex entry to cite T5X.
 
 ```
